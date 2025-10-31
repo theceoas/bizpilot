@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
@@ -25,7 +25,7 @@ export default function LoginPage() {
     setError('')
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
@@ -38,7 +38,7 @@ export default function LoginPage() {
       // Redirect to the original page or admin
       const redirectTo = redirectedFrom || '/admin'
       router.push(redirectTo)
-    } catch (error) {
+    } catch {
       setError('An unexpected error occurred')
     } finally {
       setIsLoading(false)

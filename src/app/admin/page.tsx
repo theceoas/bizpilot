@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { TestimonialManager } from '@/components/admin/testimonial-manager'
 import { BeforeAfterManager } from '@/components/admin/before-after-manager'

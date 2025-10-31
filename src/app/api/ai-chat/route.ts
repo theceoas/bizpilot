@@ -57,7 +57,7 @@ Always be helpful, friendly, and focus on how BizPilot can solve their specific 
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, sessionId, conversationHistory } = await request.json()
+    const { message, conversationHistory } = await request.json()
 
     if (!message) {
       return NextResponse.json(
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
     let conversationContext = BIZPILOT_KNOWLEDGE + "\n\nConversation History:\n"
     
     if (conversationHistory && conversationHistory.length > 0) {
-      conversationHistory.forEach((msg: any) => {
+      conversationHistory.forEach((msg: { type: string; content: string }) => {
         conversationContext += `${msg.type === 'user' ? 'Customer' : 'Assistant'}: ${msg.content}\n`
       })
     }
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
 
     // For demo purposes, we'll use a simple response system
     // In production, you would integrate with OpenAI or another AI service
-    const response = await generateAIResponse(message, conversationContext)
+    const response = await generateAIResponse(message)
 
     return NextResponse.json({ response })
 
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Simple AI response generator (replace with OpenAI in production)
-async function generateAIResponse(message: string, context: string): Promise<string> {
+async function generateAIResponse(message: string): Promise<string> {
   const lowerMessage = message.toLowerCase()
 
   // Pricing questions
@@ -138,7 +138,7 @@ async function generateAIResponse(message: string, context: string): Promise<str
 // Webhook endpoint for n8n integration
 export async function PUT(request: NextRequest) {
   try {
-    const { message, webhook_id, source } = await request.json()
+    const { message, webhook_id } = await request.json()
     
     // Verify webhook secret (in production)
     const webhookSecret = request.headers.get('x-webhook-secret')
@@ -150,7 +150,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Generate AI response
-    const response = await generateAIResponse(message, BIZPILOT_KNOWLEDGE)
+    const response = await generateAIResponse(message)
 
     // Save to database
     await saveChatMessage({

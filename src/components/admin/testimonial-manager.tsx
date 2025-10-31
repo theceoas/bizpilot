@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { Plus, Edit, Trash2, Upload, Eye } from 'lucide-react'
+import { Plus, Edit, Trash2, Eye } from 'lucide-react'
 import { getTestimonials, createTestimonial, updateTestimonial, deleteTestimonial, uploadFile } from '@/lib/database'
 import { Testimonial } from '@/lib/supabase'
 
