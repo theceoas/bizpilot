@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Quote, MessageSquare } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { getTestimonials } from '@/lib/database'
@@ -151,11 +152,15 @@ export function Testimonials() {
           </DialogHeader>
           {selectedImage && (
             <div className="flex justify-center">
-              <img
-                src={selectedImage}
-                alt="Customer text message"
-                className="max-w-full h-auto rounded-lg shadow-lg"
-              />
+              <div className="relative max-w-full">
+                <Image
+                  src={selectedImage}
+                  alt="Customer text message"
+                  width={600}
+                  height={400}
+                  className="h-auto rounded-lg shadow-lg"
+                />
+              </div>
             </div>
           )}
         </DialogContent>

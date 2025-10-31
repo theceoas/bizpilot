@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Eye, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -119,11 +120,14 @@ export function ProductGeneration() {
             {showcases.map((showcase) => (
               <Card key={showcase.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onClick={() => openModal(showcase)}>
                 <div className="relative">
-                  <img
-                    src={showcase.thumbnail_url}
-                    alt={showcase.title}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative w-full h-48">
+                    <Image
+                      src={showcase.thumbnail_url}
+                      alt={showcase.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
                     <Eye className="text-white opacity-0 hover:opacity-100 transition-opacity h-8 w-8" />
                   </div>
@@ -183,11 +187,14 @@ export function ProductGeneration() {
                 
                 {getCurrentImages().length > 0 && (
                   <div className="relative">
-                    <img
-                      src={getCurrentImages()[currentImageIndex]}
-                      alt={`${viewMode} image ${currentImageIndex + 1}`}
-                      className="w-full h-96 object-cover rounded-lg"
-                    />
+                    <div className="relative w-full h-96">
+                      <Image
+                        src={getCurrentImages()[currentImageIndex]}
+                        alt={`${viewMode} image ${currentImageIndex + 1}`}
+                        fill
+                        className="object-cover rounded-lg"
+                      />
+                    </div>
                     
                     {getCurrentImages().length > 1 && (
                       <>
@@ -215,16 +222,18 @@ export function ProductGeneration() {
                 {getCurrentImages().length > 1 && (
                   <div className="flex space-x-2 mt-4 overflow-x-auto">
                     {getCurrentImages().map((image, index) => (
-                      <img
-                        key={index}
-                        src={image}
-                        alt={`Thumbnail ${index + 1}`}
-                        className={cn(
-                          "w-16 h-16 object-cover rounded cursor-pointer border-2",
-                          currentImageIndex === index ? "border-blue-500" : "border-gray-300"
-                        )}
-                        onClick={() => setCurrentImageIndex(index)}
-                      />
+                      <div key={index} className="relative w-16 h-16 flex-shrink-0">
+                        <Image
+                          src={image}
+                          alt={`Thumbnail ${index + 1}`}
+                          fill
+                          className={cn(
+                            "object-cover rounded cursor-pointer border-2",
+                            currentImageIndex === index ? "border-blue-500" : "border-gray-300"
+                          )}
+                          onClick={() => setCurrentImageIndex(index)}
+                        />
+                      </div>
                     ))}
                   </div>
                 )}

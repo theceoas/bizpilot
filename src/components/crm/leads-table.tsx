@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -58,11 +58,7 @@ export function LeadsTable({ onStatsUpdate }: LeadsTableProps) {
   
   const supabase = createClientComponentClient()
 
-  useEffect(() => {
-    loadLeads()
-  }, [])
-
-  const loadLeads = async () => {
+  const loadLeads = useCallback(async () => {
     try {
       setLoading(true)
       const { data, error } = await supabase
@@ -80,7 +76,11 @@ export function LeadsTable({ onStatsUpdate }: LeadsTableProps) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [supabase])
+
+  useEffect(() => {
+    loadLeads()
+  }, [loadLeads])
 
   const deleteLead = async (id: string) => {
     if (!confirm('Are you sure you want to delete this lead?')) return

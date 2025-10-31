@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -49,11 +49,31 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
   
   const supabase = createClientComponentClient()
 
+  const loadNotifications = useCallback(async () => {
+    try {
+      setLoading(true)
+      const { data, error } = await supabase
+        .from('notifications')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(50)
+
+      if (error) throw error
+      
+      setNotifications(data || [])
+      setUnreadCount(data?.filter(n => !n.is_read).length || 0)
+    } catch (error) {
+      console.error('Error loading notifications:', error)
+    } finally {
+      setLoading(false)
+    }
+  }, [supabase])
+
   useEffect(() => {
     if (isOpen) {
       loadNotifications()
     }
-  }, [isOpen])
+  }, [isOpen, loadNotifications])
 
   useEffect(() => {
     // Set up real-time subscription for new notifications
@@ -77,27 +97,7 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
     return () => {
       supabase.removeChannel(channel)
     }
-  }, [])
-
-  const loadNotifications = async () => {
-    try {
-      setLoading(true)
-      const { data, error } = await supabase
-        .from('notifications')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .limit(50)
-
-      if (error) throw error
-      
-      setNotifications(data || [])
-      setUnreadCount(data?.filter(n => !n.is_read).length || 0)
-    } catch (error) {
-      console.error('Error loading notifications:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
+  }, [supabase])
 
   const markAsRead = async (id: string) => {
     try {

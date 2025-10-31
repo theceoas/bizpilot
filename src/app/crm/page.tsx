@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -40,21 +40,16 @@ export default function CRMDashboard() {
   const router = useRouter()
   const supabase = createClientComponentClient()
 
-  useEffect(() => {
-    checkUser()
-    loadDashboardStats()
-  }, [])
-
-  const checkUser = async () => {
+  const checkUser = useCallback(async () => {
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) {
       router.push('/auth/login')
       return
     }
     setUser(session.user)
-  }
+  }, [supabase.auth, router])
 
-  const loadDashboardStats = async () => {
+  const loadDashboardStats = useCallback(async () => {
     try {
       // Load leads count
       const { count: leadsCount } = await supabase
@@ -84,8 +79,7 @@ export default function CRMDashboard() {
         .not('contract_value', 'is', null)
 
       const totalRevenue = revenueData?.reduce((sum, client) => 
-        sum + (parseFloat(client.contract_value) || 0), 0
-      ) || 0
+        sum + (client.contract_value || 0), 0) || 0
 
       setStats({
         totalLeads: leadsCount || 0,
@@ -99,7 +93,12 @@ export default function CRMDashboard() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [supabase])
+
+  useEffect(() => {
+    checkUser()
+    loadDashboardStats()
+  }, [checkUser, loadDashboardStats])
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Eye, ArrowRight } from 'lucide-react'
@@ -27,20 +28,22 @@ export function TransformationCard({ transformation, onClick, featured = false }
         {/* Image Container */}
         <div className="relative aspect-[4/3] overflow-hidden rounded-t-lg bg-gray-100">
           {/* Before Image */}
-          <img
+          <Image
             src={transformation.before_image_url}
             alt={`${transformation.title} - Before`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            fill
+            className={`object-cover transition-opacity duration-500 ${
               showAfter ? 'opacity-0' : 'opacity-100'
             }`}
             onLoad={() => setImageLoaded(true)}
           />
           
           {/* After Image */}
-          <img
+          <Image
             src={transformation.after_image_url}
             alt={`${transformation.title} - After`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            fill
+            className={`object-cover transition-opacity duration-500 ${
               showAfter ? 'opacity-100' : 'opacity-0'
             }`}
           />

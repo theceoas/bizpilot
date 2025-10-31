@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { getBeforeAfterImages } from '@/lib/database'
 import { BeforeAfterImage } from '@/lib/supabase'
 import { TransformationCard } from '@/components/transformation-card'
@@ -119,19 +120,25 @@ export function BeforeAfterSection() {
                 <div className="grid grid-cols-2">
                   <div className="bg-red-50 p-4">
                     <h4 className="text-lg font-semibold text-red-600 mb-3">Before</h4>
-                    <img
-                      src={image.before_image_url}
-                      alt="Before"
-                      className="w-full h-48 object-cover rounded-lg shadow-sm"
-                    />
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={image.before_image_url}
+                        alt="Before"
+                        fill
+                        className="object-cover rounded-lg shadow-sm"
+                      />
+                    </div>
                   </div>
                   <div className="bg-green-50 p-4">
                     <h4 className="text-lg font-semibold text-green-600 mb-3">After</h4>
-                    <img
-                      src={image.after_image_url}
-                      alt="After"
-                      className="w-full h-48 object-cover rounded-lg shadow-sm"
-                    />
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={image.after_image_url}
+                        alt="After"
+                        fill
+                        className="object-cover rounded-lg shadow-sm"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

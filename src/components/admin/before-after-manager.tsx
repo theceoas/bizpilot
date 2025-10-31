@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -239,19 +240,25 @@ export function BeforeAfterManager() {
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <h4 className="text-sm font-medium text-gray-700 mb-2">Before</h4>
-                  <img
-                    src={image.before_image_url}
-                    alt="Before"
-                    className="w-full h-32 object-cover rounded-md"
-                  />
+                  <div className="relative w-full h-32">
+                    <Image
+                      src={image.before_image_url}
+                      alt="Before"
+                      fill
+                      className="object-cover rounded-md"
+                    />
+                  </div>
                 </div>
                 <div>
                   <h4 className="text-sm font-medium text-gray-700 mb-2">After</h4>
-                  <img
-                    src={image.after_image_url}
-                    alt="After"
-                    className="w-full h-32 object-cover rounded-md"
-                  />
+                  <div className="relative w-full h-32">
+                    <Image
+                      src={image.after_image_url}
+                      alt="After"
+                      fill
+                      className="object-cover rounded-md"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex justify-end space-x-2">

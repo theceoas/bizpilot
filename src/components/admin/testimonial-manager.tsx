@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -286,11 +287,14 @@ export function TestimonialManager() {
               )}
               {testimonial.text_message_image_url && (
                 <div className="mb-4">
-                  <img
-                    src={testimonial.text_message_image_url}
-                    alt="Text message"
-                    className="w-full h-32 object-cover rounded-md"
-                  />
+                  <div className="relative w-full h-32">
+                    <Image
+                      src={testimonial.text_message_image_url}
+                      alt="Text message"
+                      fill
+                      className="object-cover rounded-md"
+                    />
+                  </div>
                 </div>
               )}
               <div className="flex gap-2 mb-4">
