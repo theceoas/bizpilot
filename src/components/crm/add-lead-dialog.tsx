@@ -91,9 +91,9 @@ export function AddLeadDialog({ onLeadAdded, pipelineStages }: AddLeadDialogProp
       
       setOpen(false)
       onLeadAdded()
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error adding lead:', error)
-      setError(error.message || 'Failed to add lead')
+      setError(error instanceof Error ? error.message : 'Failed to add lead')
     } finally {
       setLoading(false)
     }

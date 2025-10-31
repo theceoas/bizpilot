@@ -5,9 +5,8 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
-import { Mail, Phone, Building, DollarSign, Calendar, MoreVertical } from 'lucide-react'
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd'
+import { Mail, Building, DollarSign, Calendar, MoreVertical } from 'lucide-react'
 import { format } from 'date-fns'
 
 interface PipelineStage {
@@ -81,7 +80,7 @@ export function PipelineView({ onStatsUpdate }: PipelineViewProps) {
     }
   }
 
-  const onDragEnd = async (result: any) => {
+  const onDragEnd = async (result: DropResult) => {
     if (!result.destination) return
 
     const { source, destination, draggableId } = result

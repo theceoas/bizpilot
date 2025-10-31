@@ -79,9 +79,9 @@ export function AddClientDialog({ onClientAdded }: AddClientDialogProps) {
       
       setOpen(false)
       onClientAdded()
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error adding client:', error)
-      setError(error.message || 'Failed to add client')
+      setError(error instanceof Error ? error.message : 'Failed to add client')
     } finally {
       setLoading(false)
     }

@@ -83,7 +83,7 @@ export function BusinessForm() {
           Get Your Custom AI Solution
         </CardTitle>
         <CardDescription className="text-lg text-gray-600">
-          Tell us about your business and we'll get in touch
+          Tell us about your business and we&apos;ll get in touch
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -67,7 +67,7 @@ export function PainAgitateSolution() {
               </li>
               <li className="flex items-start">
                 <span className="text-red-600 mr-3 text-xl">•</span>
-                <span>Sales happen only when you're available</span>
+                <span>Sales happen only when you&apos;re available</span>
               </li>
               <li className="flex items-start">
                 <span className="text-red-600 mr-3 text-xl">•</span>
@@ -75,7 +75,7 @@ export function PainAgitateSolution() {
               </li>
               <li className="flex items-start">
                 <span className="text-red-600 mr-3 text-xl">•</span>
-                <span>Your products don't get views on social media</span>
+                <span>Your products don&apos;t get views on social media</span>
               </li>
               <li className="flex items-start">
                 <span className="text-red-600 mr-3 text-xl">•</span>
@@ -83,11 +83,11 @@ export function PainAgitateSolution() {
               </li>
               <li className="flex items-start">
                 <span className="text-red-600 mr-3 text-xl">•</span>
-                <span>Your phone photos don't look professional</span>
+                <span>Your phone photos don&apos;t look professional</span>
               </li>
               <li className="flex items-start">
                 <span className="text-red-600 mr-3 text-xl">•</span>
-                <span>You're always working, never growing</span>
+                <span>You&apos;re always working, never growing</span>
               </li>
             </ul>
           </div>

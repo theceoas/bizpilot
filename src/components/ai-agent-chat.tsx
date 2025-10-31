@@ -111,7 +111,7 @@ export function AIAgentChat({
         msg.id === tempMessage.id 
           ? {
               ...msg,
-              answer: 'Sorry, I\'m having trouble connecting. Please try again later.',
+              answer: 'Sorry, I&apos;m having trouble connecting. Please try again later.',
               status: 'failed' as const
             }
           : msg
@@ -150,7 +150,7 @@ export function AIAgentChat({
               <div className="text-center text-muted-foreground py-8">
                 <Bot className="h-12 w-12 mx-auto mb-4 text-blue-600/50" />
                 <p className="text-sm">
-                  Hi! I'm BizPilot AI. Ask me anything about business automation,
+                  Hi! I&apos;m BizPilot AI. Ask me anything about business automation,
                   <br />our services, or how we can help streamline your operations.
                 </p>
               </div>
