@@ -97,16 +97,7 @@ export function BonusSection() {
           </Card>
         </div>
 
-        {/* Scarcity Message */}
-        <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold mb-4 sm:mb-6">
-            <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="text-sm sm:text-base">Only 3 Deployment Slots Available This Month</span>
-          </div>
-          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-            Only 3 Deployment Slots are available this month to ensure top-quality setup for each client. Once filled, onboarding closes until next month.
-          </p>
-        </div>
+        {/* Removed scarcity message as requested */}
       </div>
     </section>
   )

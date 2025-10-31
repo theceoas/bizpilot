@@ -8,28 +8,36 @@ import {
 export function FAQSection() {
   const faqs = [
     {
-      question: "Will I be replying to customers?",
-      answer: "No — your AI assistants reply instantly, handle inquiries, and direct customers to purchase without you."
+      question: "Will customers accept AI responses?",
+      answer: "Yes! Our AI responds naturally and professionally. Most customers can't tell the difference, and they love the instant responses. Plus, you can always step in if needed."
     },
     {
-      question: "Do I need a website already?",
-      answer: "Nope — we build the full system from scratch."
+      question: "Do I need to be technical to use this?",
+      answer: "Not at all. We handle all the technical setup. You just need to approve the final system and we'll train you on the simple dashboard to manage everything."
     },
     {
-      question: "What do you need from me?",
-      answer: "After you apply, we'll schedule an onboarding call to understand your business. Then we collect your branding, product/service info, FAQs, tone, and everything else needed to build your AI team. You don't need to be techy — we handle it all."
+      question: "What kind of support do I get?",
+      answer: "Full support for 90 days after launch, plus training on how to use your dashboard. We're here to ensure your success."
     },
     {
-      question: "Can this work for service businesses too?",
-      answer: "Absolutely. We customize your AI assistant team for products and services — they qualify leads, reply instantly, and can direct customers to book calls or consultations."
+      question: "Are there ongoing costs?",
+      answer: "Only small usage credits (like airtime top-ups) when the AI is actively working. No monthly subscriptions or hidden fees. You own the system."
     },
     {
-      question: "How long does setup take?",
-      answer: "Your complete AI assistant team is deployed in 7 days or less. We handle all the technical setup, configuration, and testing. You just need to approve the final result."
+      question: "Can I see a custom demo for my business?",
+      answer: "Absolutely! During your free consultation, we'll show you exactly how the AI will work with YOUR specific products and customers."
     },
     {
-      question: "What happens after the 7 days?",
-      answer: "You own the complete system. No monthly fees, no subscriptions. It's yours forever. We also provide training and support to ensure you can manage everything confidently."
+      question: "How quickly will I see results?",
+      answer: "Most clients see increased inquiries within 24 hours of going live, and first sales within the first week. The AI works 24/7 from day one."
+    },
+    {
+      question: "Why is pricing custom?",
+      answer: "Every business is different. Your pricing depends on your product catalog size, customer volume, and automation needs. We audit your business to give you an accurate quote and ROI projection."
+    },
+    {
+      question: "Do you offer payment plans?",
+      answer: "Yes! We offer flexible payment options to make this investment work for your cash flow. Details discussed during your consultation."
     }
   ]
 
@@ -41,7 +49,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-600">
-            Everything you need to know about BizPilot™
+            Everything you need to know about AI Business OS™
           </p>
         </div>
 
@@ -64,4 +72,4 @@ export function FAQSection() {
       </div>
     </section>
   )
-} 
+}

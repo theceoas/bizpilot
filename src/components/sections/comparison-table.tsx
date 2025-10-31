@@ -1,101 +1,105 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, XCircle } from "lucide-react"
+import { CheckCircle, XCircle, Clock, DollarSign, Users, Zap, TrendingUp, BarChart3 } from "lucide-react"
 
 export function ComparisonTable() {
   const features = [
     {
-      feature: "Replies to customers 24/7",
-      hiring: { available: true, note: "but costly" },
-      yourself: { available: false, note: undefined },
-      aiSystem: { available: true, note: undefined }
+      feature: "Cost",
+      manual: { value: "Your time 4-6 hrs", available: false, note: "Your valuable time" },
+      hiring: { value: "₦80-150k/mo per employee", available: false, note: "Plus benefits" },
+      aiSystem: { value: "One-time fee + ₦70k/mo ops", available: true, note: "Much less than 1 employee" }
     },
     {
-      feature: "Handles orders & tracking",
-      hiring: { available: true, note: undefined },
-      yourself: { available: false, note: "manual, slow" },
-      aiSystem: { available: true, note: undefined }
+      feature: "Availability",
+      manual: { value: "Only when you're available", available: false, note: "Limited hours" },
+      hiring: { value: "Business hrs 8-10 hrs/day", available: false, note: "Not 24/7" },
+      aiSystem: { value: "24/7/365 Never sleeps", available: true, note: "Always working" }
     },
     {
-      feature: "Creates email marketing campaigns",
-      hiring: { available: false, note: undefined },
-      yourself: { available: false, note: "needs tools/skills" },
-      aiSystem: { available: true, note: undefined }
+      feature: "Response Time",
+      manual: { value: "Hours", available: false, note: "Customers wait" },
+      hiring: { value: "10-30 min", available: false, note: "Still slow" },
+      aiSystem: { value: "8 seconds", available: true, note: "Instant response" }
     },
     {
-      feature: "Enhances product photos",
-      hiring: { available: false, note: undefined },
-      yourself: { available: false, note: "requires a designer" },
-      aiSystem: { available: true, note: undefined }
+      feature: "Sick Days",
+      manual: { value: "You get sick/tired", available: false, note: "Business stops" },
+      hiring: { value: "Employees call out", available: false, note: "Unreliable" },
+      aiSystem: { value: "Never", available: true, note: "Always reliable" }
     },
     {
-      feature: "Auto-posts to WhatsApp/Instagram",
-      hiring: { available: false, note: undefined },
-      yourself: { available: false, note: undefined },
-      aiSystem: { available: true, note: undefined }
+      feature: "Consistency",
+      manual: { value: "Mood-dependent", available: false, note: "Varies daily" },
+      hiring: { value: "Varies by person", available: false, note: "Human error" },
+      aiSystem: { value: "Perfect every time", available: true, note: "No bad days" }
     },
     {
-      feature: "Sends promotions & discounts",
-      hiring: { available: true, note: "requires marketing team" },
-      yourself: { available: false, note: undefined },
-      aiSystem: { available: true, note: undefined }
+      feature: "Scalability",
+      manual: { value: "Can't handle multiple", available: false, note: "Limited capacity" },
+      hiring: { value: "Hire more = more cost", available: false, note: "Expensive scaling" },
+      aiSystem: { value: "Handles unlimited volume", available: true, note: "Scales automatically" }
     },
     {
-      feature: "Collects customer reviews",
-      hiring: { available: false, note: undefined },
-      yourself: { available: false, note: undefined },
-      aiSystem: { available: true, note: undefined }
+      feature: "Data & Analytics",
+      manual: { value: "Manual tracking", available: false, note: "Time consuming" },
+      hiring: { value: "Manual reports", available: false, note: "Prone to errors" },
+      aiSystem: { value: "Real-time dashboard", available: true, note: "Instant insights" }
     },
     {
-      feature: "Escalates refund issues smartly",
-      hiring: { available: true, note: undefined },
-      yourself: { available: false, note: undefined },
-      aiSystem: { available: true, note: undefined }
-    },
-    {
-      feature: "Can launch in 1 week",
-      hiring: { available: false, note: undefined },
-      yourself: { available: false, note: "takes time" },
-      aiSystem: { available: true, note: undefined }
-    },
-    {
-      feature: "Affordable and scalable",
-      hiring: { available: false, note: undefined },
-      yourself: { available: true, note: "but limited" },
-      aiSystem: { available: true, note: undefined }
+      feature: "Training Time",
+      manual: { value: "None", available: true, note: "But limited by your time" },
+      hiring: { value: "2-4 weeks", available: false, note: "Plus ongoing training" },
+      aiSystem: { value: "None (we do it)", available: true, note: "Ready to use" }
     }
   ]
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
         <div className="text-center mb-12 sm:mb-16">
+          <div className="text-4xl mb-4">⚖️</div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Why Our AI System Wins
+            Your Options
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            Compare what you get with different approaches — our AI system handles everything while staying affordable and scalable.
+            The choice is clear. Work smarter, not harder.
           </p>
         </div>
 
         {/* Desktop Table View */}
         <div className="hidden lg:block">
-          <Card className="overflow-hidden">
+          <Card className="overflow-hidden shadow-2xl">
             <CardHeader className="bg-gradient-to-r from-slate-50 to-blue-50 border-b">
               <CardTitle className="text-center text-xl sm:text-2xl font-bold text-gray-900">
-                Feature Comparison
+                Complete Comparison
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="text-left p-4 sm:p-6 font-semibold text-gray-900">Feature</th>
-                      <th className="text-center p-4 sm:p-6 font-semibold text-gray-900">Hiring a Team</th>
-                      <th className="text-center p-4 sm:p-6 font-semibold text-gray-900">Doing It Yourself</th>
-                      <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 bg-gradient-to-r from-blue-50 to-emerald-50">Our AI System</th>
+                    <tr className="border-b border-gray-200 bg-gray-50">
+                      <th className="text-left p-4 sm:p-6 font-semibold text-gray-900 w-1/4">Feature</th>
+                      <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 w-1/4">
+                        <div className="flex items-center justify-center gap-2">
+                          <Clock className="w-5 h-5 text-red-500" />
+                          Manual Work
+                        </div>
+                      </th>
+                      <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 w-1/4">
+                        <div className="flex items-center justify-center gap-2">
+                          <Users className="w-5 h-5 text-orange-500" />
+                          Hiring Staff
+                        </div>
+                      </th>
+                      <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 bg-gradient-to-r from-blue-50 to-emerald-50 w-1/4">
+                        <div className="flex items-center justify-center gap-2">
+                          <Zap className="w-5 h-5 text-blue-600" />
+                          Our AI System
+                        </div>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -105,34 +109,43 @@ export function ComparisonTable() {
                           {row.feature}
                         </td>
                         <td className="p-4 sm:p-6 text-center">
-                          <div className="flex items-center justify-center gap-2">
-                            {row.hiring.available ? (
-                              <CheckCircle className="w-5 h-5 text-emerald-600" />
-                            ) : (
-                              <XCircle className="w-5 h-5 text-red-500" />
-                            )}
-                            {row.hiring.note && (
-                              <span className="text-xs text-gray-500">({row.hiring.note})</span>
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="flex items-center justify-center gap-2">
+                              {row.manual.available ? (
+                                <CheckCircle className="w-5 h-5 text-emerald-600" />
+                              ) : (
+                                <XCircle className="w-5 h-5 text-red-500" />
+                              )}
+                            </div>
+                            <div className="text-sm text-gray-700 font-medium">{row.manual.value}</div>
+                            {row.manual.note && (
+                              <div className="text-xs text-gray-500">({row.manual.note})</div>
                             )}
                           </div>
                         </td>
                         <td className="p-4 sm:p-6 text-center">
-                          <div className="flex items-center justify-center gap-2">
-                            {row.yourself.available ? (
-                              <CheckCircle className="w-5 h-5 text-emerald-600" />
-                            ) : (
-                              <XCircle className="w-5 h-5 text-red-500" />
-                            )}
-                            {row.yourself.note && (
-                              <span className="text-xs text-gray-500">({row.yourself.note})</span>
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="flex items-center justify-center gap-2">
+                              {row.hiring.available ? (
+                                <CheckCircle className="w-5 h-5 text-emerald-600" />
+                              ) : (
+                                <XCircle className="w-5 h-5 text-red-500" />
+                              )}
+                            </div>
+                            <div className="text-sm text-gray-700 font-medium">{row.hiring.value}</div>
+                            {row.hiring.note && (
+                              <div className="text-xs text-gray-500">({row.hiring.note})</div>
                             )}
                           </div>
                         </td>
                         <td className="p-4 sm:p-6 text-center bg-gradient-to-r from-blue-50/50 to-emerald-50/50">
-                          <div className="flex items-center justify-center gap-2">
-                            <CheckCircle className="w-5 h-5 text-emerald-600" />
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="flex items-center justify-center gap-2">
+                              <CheckCircle className="w-5 h-5 text-emerald-600" />
+                            </div>
+                            <div className="text-sm text-gray-700 font-medium">{row.aiSystem.value}</div>
                             {row.aiSystem.note && (
-                              <span className="text-xs text-gray-500">({row.aiSystem.note})</span>
+                              <div className="text-xs text-green-600 font-medium">({row.aiSystem.note})</div>
                             )}
                           </div>
                         </td>
@@ -155,40 +168,51 @@ export function ComparisonTable() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <div className="flex items-center justify-center mb-2">
+                <div className="space-y-4">
+                  {/* Manual Work */}
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Clock className="w-4 h-4 text-red-500" />
+                      <span className="text-sm font-medium text-gray-900">Manual Work</span>
+                      {row.manual.available ? (
+                        <CheckCircle className="w-4 h-4 text-emerald-600" />
+                      ) : (
+                        <XCircle className="w-4 h-4 text-red-500" />
+                      )}
+                    </div>
+                    <div className="text-sm text-gray-700">{row.manual.value}</div>
+                    {row.manual.note && (
+                      <div className="text-xs text-gray-500 mt-1">({row.manual.note})</div>
+                    )}
+                  </div>
+
+                  {/* Hiring Staff */}
+                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Users className="w-4 h-4 text-orange-500" />
+                      <span className="text-sm font-medium text-gray-900">Hiring Staff</span>
                       {row.hiring.available ? (
-                        <CheckCircle className="w-5 h-5 text-emerald-600" />
+                        <CheckCircle className="w-4 h-4 text-emerald-600" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-500" />
+                        <XCircle className="w-4 h-4 text-red-500" />
                       )}
                     </div>
-                    <p className="text-xs font-medium text-gray-900 mb-1">Hiring a Team</p>
+                    <div className="text-sm text-gray-700">{row.hiring.value}</div>
                     {row.hiring.note && (
-                      <p className="text-xs text-gray-500">({row.hiring.note})</p>
+                      <div className="text-xs text-gray-500 mt-1">({row.hiring.note})</div>
                     )}
                   </div>
-                  <div className="text-center">
-                    <div className="flex items-center justify-center mb-2">
-                      {row.yourself.available ? (
-                        <CheckCircle className="w-5 h-5 text-emerald-600" />
-                      ) : (
-                        <XCircle className="w-5 h-5 text-red-500" />
-                      )}
+
+                  {/* AI System */}
+                  <div className="bg-gradient-to-r from-blue-50 to-emerald-50 border border-blue-200 rounded-lg p-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Zap className="w-4 h-4 text-blue-600" />
+                      <span className="text-sm font-medium text-gray-900">Our AI System</span>
+                      <CheckCircle className="w-4 h-4 text-emerald-600" />
                     </div>
-                    <p className="text-xs font-medium text-gray-900 mb-1">Doing It Yourself</p>
-                    {row.yourself.note && (
-                      <p className="text-xs text-gray-500">({row.yourself.note})</p>
-                    )}
-                  </div>
-                  <div className="text-center bg-gradient-to-r from-blue-50 to-emerald-50 rounded-lg p-2">
-                    <div className="flex items-center justify-center mb-2">
-                      <CheckCircle className="w-5 h-5 text-emerald-600" />
-                    </div>
-                    <p className="text-xs font-medium text-gray-900 mb-1">Our AI System</p>
+                    <div className="text-sm text-gray-700 font-medium">{row.aiSystem.value}</div>
                     {row.aiSystem.note && (
-                      <p className="text-xs text-gray-500">({row.aiSystem.note})</p>
+                      <div className="text-xs text-green-600 font-medium mt-1">({row.aiSystem.note})</div>
                     )}
                   </div>
                 </div>
@@ -196,7 +220,18 @@ export function ComparisonTable() {
             </Card>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-12">
+          <div className="bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-xl p-6 max-w-2xl mx-auto">
+            <h3 className="text-xl font-bold mb-2">The choice is clear.</h3>
+            <p className="text-blue-100 mb-4">Work smarter, not harder.</p>
+            <button className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+              Get My Custom AI Solution
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   )
-} 
+}

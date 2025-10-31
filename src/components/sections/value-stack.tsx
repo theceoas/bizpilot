@@ -1,8 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ApplicationForm } from "@/components/application-form"
+import { BusinessForm } from "@/components/business-form"
 import { MessageSquare, BarChart3, ImageIcon, Mail, Package, HeadphonesIcon, Zap, CheckCircle } from "lucide-react"
 
 export function ValueStack() {
@@ -72,7 +71,7 @@ export function ValueStack() {
       <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Here&apos;s What You Get When You Onboard BizPilot™
+            Here&apos;s What You Get When You Onboard AI Business OS™
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Present each as a premium, standalone asset with perceived value clearly stated
@@ -126,17 +125,9 @@ export function ValueStack() {
 
         {/* CTA Button */}
         <div className="text-center">
-          <ApplicationForm>
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
-              Apply for Your AI Team →
-            </Button>
-          </ApplicationForm>
+          <BusinessForm />
         </div>
       </div>
     </section>
   )
-} 
+}

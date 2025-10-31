@@ -40,7 +40,7 @@ export function Navigation() {
               <Zap className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-bold text-gray-900">BizPilot™</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-900">AI Business OS™</span>
               <span className="text-xs text-gray-500 font-medium hidden sm:block">
                 by MANACQ AI
               </span>
@@ -53,7 +53,7 @@ export function Navigation() {
               onClick={() => scrollToSection("demo")}
               className="text-gray-600 hover:text-slate-700 transition-colors font-medium text-sm lg:text-base"
             >
-              Live Demo
+              Demo
             </button>
             <button
               onClick={() => scrollToSection("features")}
@@ -101,7 +101,7 @@ export function Navigation() {
                 onClick={() => scrollToSection("demo")}
                 className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-700 hover:bg-slate-50 rounded-md transition-colors font-medium"
               >
-                Live Demo
+                Demo
               </button>
               <button
                 onClick={() => scrollToSection("features")}
@@ -127,4 +127,4 @@ export function Navigation() {
       </div>
     </nav>
   )
-} 
+}

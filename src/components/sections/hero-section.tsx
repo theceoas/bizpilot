@@ -1,10 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-
-import { ApplicationForm } from "@/components/application-form"
+import { BusinessForm } from "@/components/business-form"
 import { Rocket } from "lucide-react"
-import { SlotsStatus } from "@/components/slots-status"
 
 export function HeroSection() {
 
@@ -22,40 +20,59 @@ export function HeroSection() {
         <div className="text-center">
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-            Built for{" "}
+            Sell More While{" "}
             <span className="bg-gradient-to-r from-slate-600 via-blue-600 to-slate-700 bg-clip-text text-transparent">
-              Social Media Sellers
+              Working Less
             </span>
-            <br />
-            Ready to Scale
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 mb-8 sm:mb-12 leading-relaxed px-4 max-w-3xl mx-auto">
-            Our done-for-you AI system runs your store 24/7 — handling customers, tracking orders, and marketing your products automatically.
+            Your complete AI system that handles orders, customers, and follow-ups 24/7 - so you can focus on growing your business
           </p>
+
+          {/* Benefits List */}
+          <div className="mb-8 sm:mb-12 px-4 max-w-2xl mx-auto">
+            <p className="text-lg font-semibold text-gray-800 mb-4">Join 10+ Nigerian businesses already using AI to:</p>
+            <ul className="text-left text-gray-600 space-y-2 text-base sm:text-lg">
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">•</span>
+                Respond to customers in seconds (not hours)
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">•</span>
+                Close sales 24/7 (even while sleeping)
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">•</span>
+                Create engaging social media content automatically
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">•</span>
+                Generate professional product descriptions and posts
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">•</span>
+                Get 5x more reviews automatically
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">•</span>
+                Save 15-20 hours per week on manual work
+              </li>
+            </ul>
+          </div>
 
           {/* CTA Button */}
           <div className="flex flex-col gap-4 justify-center items-center mb-8 sm:mb-12 px-4">
-            <ApplicationForm>
+            <BusinessForm>
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
               >
                 <Rocket className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
-                Claim Your AI Team →
+                Get My Custom AI Solution
               </Button>
-            </ApplicationForm>
-            
-            {/* Urgency Note */}
-            <p className="text-sm sm:text-base text-red-600 font-medium bg-red-50 px-4 py-2 rounded-lg border border-red-200">
-              Only 3 slots left this month — secure yours now.
-            </p>
-          </div>
-
-          {/* Dynamic Slots Status */}
-          <div className="px-4">
-            <SlotsStatus />
+            </BusinessForm>
           </div>
         </div>
       </div>

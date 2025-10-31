@@ -1,92 +1,168 @@
-import { MessageCircle, CreditCard, Users, TrendingUp } from "lucide-react"
+import { Bot, Globe, MessageCircle, BarChart3, Monitor } from "lucide-react"
 
 export function SolutionSection() {
   return (
-    <section className="py-12 sm:py-20 bg-gradient-to-br from-emerald-50 to-green-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Headline */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
-            Imagine if everything just <span className="text-blue-600 font-semibold">worked</span>
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="text-4xl mb-4">🤖</div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Your Complete AI Business System
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 px-4">
-            Here&apos;s what your business looks like with our AI-powered system:
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Everything you need to automate your business and scale without the stress
           </p>
+          
+          {/* Benefits */}
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="font-semibold text-blue-900 mb-1">⚡ Goes Live Fast</div>
+                <div className="text-blue-700">Ready in 7-10 days</div>
+              </div>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <div className="font-semibold text-green-900 mb-1">🔄 Easy Integration</div>
+                <div className="text-green-700">Works with your existing tools</div>
+              </div>
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                <div className="font-semibold text-purple-900 mb-1">👥 No Tech Skills</div>
+                <div className="text-purple-700">We handle everything</div>
+              </div>
+              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                <div className="font-semibold text-orange-900 mb-1">💰 One Payment</div>
+                <div className="text-orange-700">Yours forever</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Solution Points */}
-        <div className="space-y-8">
-          {/* Every message answered instantly */}
-          <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 sm:p-6">
-            <div className="flex items-start gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600" />
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {/* WhatsApp & Instagram AI Sales Agent */}
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6 sm:p-8">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                <Bot className="w-6 h-6 text-green-600" />
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-emerald-800 mb-2 sm:mb-3">Every message answered instantly</h3>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3">
-                  Whether it&apos;s an order or a simple question, 
-                  customers get instant, accurate replies — 24/7 — without you lifting a finger.
-                </p>
-                <p className="text-sm sm:text-base text-emerald-700 font-medium">
-                  You win because you sell more without spending your day responding to DMs, and they win because they get fast, reliable service.
-                </p>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                1. WhatsApp & Instagram AI Sales Agent
+              </h3>
             </div>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2 mt-1">→</span>
+                <span>Answers questions, sends prices, takes orders, processes payments</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2 mt-1">→</span>
+                <span>Works 24/7, never sleeps, responds in seconds</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2 mt-1">→</span>
+                <span>Handles 10+ conversations simultaneously</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Seamless payments */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6">
-            <div className="flex items-start gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
+          {/* Professional Product Catalog */}
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6 sm:p-8">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                <Globe className="w-6 h-6 text-blue-600" />
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-blue-800 mb-2 sm:mb-3">Seamless payments</h3>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3">
-                  Once a customer pays, the system automatically confirms the payment 
-                  and sends them an order confirmation — no manual checks or back-and-forth.
-                </p>
-                <p className="text-sm sm:text-base text-blue-700 font-medium">
-                  Even if they order via WhatsApp, the agent confirms it instantly on your behalf.
-                </p>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                2. Professional Product Catalog & Media
+              </h3>
             </div>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2 mt-1">→</span>
+                <span>AI-enhanced product photos and videos (backgrounds, lighting)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2 mt-1">→</span>
+                <span>Auto-generated descriptions and captions</span>
+              </li>
+            </ul>
           </div>
 
-          {/* No need to hire extra staff */}
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 sm:p-6">
-            <div className="flex items-start gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+          {/* Smart Follow-Up System */}
+          <div className="bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-200 rounded-xl p-6 sm:p-8">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                <MessageCircle className="w-6 h-6 text-purple-600" />
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-purple-800 mb-2 sm:mb-3">No need to hire extra staff</h3>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3">
-                  Instead of hiring people to take orders, answer questions, and post products, 
-                  your AI team works 24/7 — for a one-time setup.
-                </p>
-                <p className="text-sm sm:text-base text-purple-700 font-medium">
-                  You get the same results without paying monthly salaries.
-                </p>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                3. Smart Follow-Up System
+              </h3>
             </div>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-purple-600 mr-2 mt-1">→</span>
+                <span>Automatically requests reviews after delivery</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-purple-600 mr-2 mt-1">→</span>
+                <span>Collects testimonials and customer photos</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-purple-600 mr-2 mt-1">→</span>
+                <span>Builds your social proof on autopilot</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Built to scale with you */}
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 sm:p-6">
-            <div className="flex items-start gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
+          {/* Real-Time Dashboard */}
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-6 sm:p-8">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                <BarChart3 className="w-6 h-6 text-orange-600" />
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-orange-800 mb-2 sm:mb-3">Built to scale with you</h3>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Whether you&apos;re processing 30 orders or 300, 
-                  everything runs smoothly without adding extra work or extra people.
-                </p>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                4. Real-Time Dashboard
+              </h3>
             </div>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-orange-600 mr-2 mt-1">→</span>
+                <span>See every sale as it happens</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-orange-600 mr-2 mt-1">→</span>
+                <span>Track AI performance and conversions</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-orange-600 mr-2 mt-1">→</span>
+                <span>Know exactly what&apos;s making you money</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Professional Website - Centered */}
+          <div className="md:col-span-2 md:max-w-lg md:mx-auto bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-200 rounded-xl p-6 sm:p-8">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mr-4">
+                <Monitor className="w-6 h-6 text-teal-600" />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                5. High-Quality Professional Website
+              </h3>
+            </div>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-teal-600 mr-2 mt-1">→</span>
+                <span>Mobile-optimized shopping experience</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-teal-600 mr-2 mt-1">→</span>
+                <span>Professional design that builds trust</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-teal-600 mr-2 mt-1">→</span>
+                <span>Easy browsing and purchasing for customers</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

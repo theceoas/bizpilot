@@ -1,124 +1,148 @@
-import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs/promises'
-import path from 'path'
+import { NextRequest, NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
 
-const testimonialsPath = path.join(process.cwd(), 'data', 'testimonials.json')
-
-// Ensure data directory exists
-async function ensureDataDir() {
-  const dataDir = path.join(process.cwd(), 'data')
-  try {
-    await fs.access(dataDir)
-  } catch {
-    await fs.mkdir(dataDir, { recursive: true })
-  }
-}
-
-// GET testimonials
 export async function GET() {
   try {
-    await ensureDataDir()
-    
-    try {
-      const data = await fs.readFile(testimonialsPath, 'utf-8')
-      const testimonials = JSON.parse(data)
-      return NextResponse.json(testimonials)
-    } catch {
-      // If file doesn't exist, return default testimonials
-      const defaultTestimonials = [
-        {
-          id: "1",
-          name: "Ada",
-          business: "Fashion Seller",
-          testimonial: "BizPilot saved me 25 hours a week and boosted my sales by 40% in the first month.",
-          result: "+40% Sales",
-          timeSaved: "25 hours/week",
-          avatar: "👩‍💼",
-          active: true
-        },
-        {
-          id: "2",
-          name: "Chioma",
-          business: "Beauty Products",
-          testimonial: "I went from missing 10+ orders daily to zero missed sales. My customers love the instant replies!",
-          result: "0 Missed Orders",
-          timeSaved: "30 hours/week",
-          avatar: "👩‍💼",
-          active: true
-        },
-        {
-          id: "3",
-          name: "Kemi",
-          business: "Phone Accessories",
-          testimonial: "The AI handles everything while I focus on sourcing. My revenue doubled in 2 months.",
-          result: "+100% Revenue",
-          timeSaved: "20 hours/week",
-          avatar: "👩‍💼",
-          active: true
-        }
-      ]
-      
-      await fs.writeFile(testimonialsPath, JSON.stringify(defaultTestimonials, null, 2))
-      return NextResponse.json(defaultTestimonials)
+    const { data: testimonials, error } = await supabase
+      .from('testimonials')
+      .select('*')
+      .order('display_order', { ascending: true })
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching testimonials:', error);
+      return NextResponse.json({ error: 'Failed to fetch testimonials' }, { status: 500 });
     }
-  } catch {
-    console.error('Error reading testimonials file')
-    return NextResponse.json({ error: 'Failed to read testimonials' }, { status: 500 })
+
+    return NextResponse.json({ testimonials });
+  } catch (error) {
+    console.error('Testimonials API error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-// POST new testimonial
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const { name, business, testimonial, result, timeSaved, avatar } = body
+    // Check authentication
+    const { data: { session }, error: authError } = await supabase.auth.getSession();
+    if (authError || !session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const body = await request.json();
+    const {
+      name,
+      role,
+      company,
+      content,
+      rating,
+      image_url,
+      text_message_image_url,
+      is_text_message,
+      display_order,
+      is_featured
+    } = body;
 
     // Validate required fields
-    if (!name || !business || !testimonial || !result || !timeSaved) {
-      return NextResponse.json(
-        { error: 'Missing required fields: name, business, testimonial, result, timeSaved' },
-        { status: 400 }
-      )
+    if (!name || !content) {
+      return NextResponse.json({ error: 'Name and content are required' }, { status: 400 });
     }
 
-    await ensureDataDir()
-
-    // Read existing testimonials
-    let testimonials = []
-    try {
-      const data = await fs.readFile(testimonialsPath, 'utf-8')
-      testimonials = JSON.parse(data)
-    } catch {
-      // File doesn't exist, start with empty array
+    if (rating && (rating < 1 || rating > 5)) {
+      return NextResponse.json({ error: 'Rating must be between 1 and 5' }, { status: 400 });
     }
 
-    // Create new testimonial
-    const newTestimonial = {
-      id: Date.now().toString(),
-      name,
-      business,
-      testimonial,
-      result,
-      timeSaved,
-      avatar: avatar || "👩‍💼",
-      active: true,
-      createdAt: new Date().toISOString()
+    const { data: testimonial, error } = await supabase
+      .from('testimonials')
+      .insert({
+        name,
+        role,
+        company,
+        content,
+        rating: rating || 5,
+        image_url,
+        text_message_image_url,
+        is_text_message: is_text_message || false,
+        display_order: display_order || 0,
+        is_featured: is_featured || false
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error creating testimonial:', error);
+      return NextResponse.json({ error: 'Failed to create testimonial' }, { status: 500 });
     }
 
-    // Add to testimonials array
-    testimonials.push(newTestimonial)
+    return NextResponse.json({ testimonial }, { status: 201 });
+  } catch (error) {
+    console.error('Testimonials POST API error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
 
-    // Keep only the latest 10 testimonials
-    if (testimonials.length > 10) {
-      testimonials = testimonials.slice(-10)
+export async function PUT(request: NextRequest) {
+  try {
+    // Check authentication
+    const { data: { session }, error: authError } = await supabase.auth.getSession();
+    if (authError || !session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Write back to file
-    await fs.writeFile(testimonialsPath, JSON.stringify(testimonials, null, 2))
+    const body = await request.json();
+    const { id, ...updateData } = body;
 
-    return NextResponse.json(newTestimonial, { status: 201 })
-  } catch {
-    console.error('Error writing testimonials file')
-    return NextResponse.json({ error: 'Failed to update testimonials' }, { status: 500 })
+    if (!id) {
+      return NextResponse.json({ error: 'Testimonial ID is required' }, { status: 400 });
+    }
+
+    const { data: testimonial, error } = await supabase
+      .from('testimonials')
+      .update(updateData)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error updating testimonial:', error);
+      return NextResponse.json({ error: 'Failed to update testimonial' }, { status: 500 });
+    }
+
+    return NextResponse.json({ testimonial });
+  } catch (error) {
+    console.error('Testimonials PUT API error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    // Check authentication
+    const { data: { session }, error: authError } = await supabase.auth.getSession();
+    if (authError || !session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ error: 'Testimonial ID is required' }, { status: 400 });
+    }
+
+    const { error } = await supabase
+      .from('testimonials')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting testimonial:', error);
+      return NextResponse.json({ error: 'Failed to delete testimonial' }, { status: 500 });
+    }
+
+    return NextResponse.json({ message: 'Testimonial deleted successfully' });
+  } catch (error) {
+    console.error('Testimonials DELETE API error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
