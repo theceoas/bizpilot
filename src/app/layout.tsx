@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MANACQ AI",
   description: "AI-powered business transformation platform",
+  viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: [
       {

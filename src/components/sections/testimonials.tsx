@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Quote, MessageSquare } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
 import { getTestimonials } from '@/lib/database'
 import { Testimonial } from '@/lib/supabase'
 
@@ -11,6 +12,13 @@ export function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   useEffect(() => {
     loadTestimonials()
@@ -101,9 +109,12 @@ export function Testimonials() {
             <p className="text-xl font-semibold text-gray-900 mb-8">
               Want to see how this works for YOUR business?
             </p>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200">
+            <Button 
+              onClick={() => scrollToSection("apply")}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200"
+            >
               Get My Custom AI Solution
-            </button>
+            </Button>
           </div>
           
           {/* Fallback testimonials if database has content */}

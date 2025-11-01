@@ -33,14 +33,25 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="flex items-center justify-between h-12 sm:h-14 lg:h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg">
-              <Zap className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
+            {/* Logo Image */}
+            <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg overflow-hidden">
+              <img 
+                src="/logos/favicon-32x32.png" 
+                alt="MANACQ AI Logo" 
+                className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+                onError={(e) => {
+                  // Fallback to Zap icon if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <Zap className="w-4 h-4 sm:w-6 sm:h-6 text-white hidden" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-bold text-gray-900">AI Business OS™</span>
+              <span className="text-sm sm:text-lg lg:text-xl font-bold text-gray-900">AI Business OS™</span>
               <span className="text-xs text-gray-500 font-medium hidden sm:block">
                 by MANACQ AI
               </span>
@@ -54,18 +65,6 @@ export function Navigation() {
               className="text-gray-600 hover:text-slate-700 transition-colors font-medium text-sm lg:text-base"
             >
               Demo
-            </button>
-            <button
-              onClick={() => scrollToSection("features")}
-              className="text-gray-600 hover:text-slate-700 transition-colors font-medium text-sm lg:text-base"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => scrollToSection("testimonials")}
-              className="text-gray-600 hover:text-slate-700 transition-colors font-medium text-sm lg:text-base"
-            >
-              Reviews
             </button>
             <Button 
               onClick={() => scrollToSection("apply")}
@@ -102,18 +101,6 @@ export function Navigation() {
                 className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-700 hover:bg-slate-50 rounded-md transition-colors font-medium"
               >
                 Demo
-              </button>
-              <button
-                onClick={() => scrollToSection("features")}
-                className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-700 hover:bg-slate-50 rounded-md transition-colors font-medium"
-              >
-                Features
-              </button>
-              <button
-                onClick={() => scrollToSection("testimonials")}
-                className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-700 hover:bg-slate-50 rounded-md transition-colors font-medium"
-              >
-                Reviews
               </button>
               <Button 
                 onClick={() => scrollToSection("apply")}
