@@ -12,7 +12,7 @@ import { Navigation } from "@/components/navigation"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-20 sm:pt-24 lg:pt-28">
       <Navigation />
       <HeroSection />
       <PainAgitateSolution />

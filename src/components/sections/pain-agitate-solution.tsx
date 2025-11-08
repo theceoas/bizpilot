@@ -23,10 +23,6 @@ export function PainAgitateSolution() {
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                <span>Make at least ₦500,000 monthly in revenue</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
                 <span>Sell on Instagram, WhatsApp, or their own website</span>
               </li>
               <li className="flex items-start">

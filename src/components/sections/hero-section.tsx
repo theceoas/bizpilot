@@ -1,19 +1,24 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { BusinessForm } from "@/components/business-form"
 import { Rocket } from "lucide-react"
 
 export function HeroSection() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-blue-50 sm:bg-blue-100 lg:bg-blue-200">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 -right-1/4 w-72 h-72 bg-gradient-to-r from-slate-300 to-blue-300 rounded-full opacity-15 blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -left-1/4 w-64 h-64 bg-gradient-to-r from-blue-300 to-slate-300 rounded-full opacity-15 blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-gradient-to-r from-gray-300 to-slate-300 rounded-full opacity-10 blur-3xl animate-pulse delay-500" />
+        <div className="absolute top-1/4 -right-1/4 w-72 h-72 bg-gradient-to-r from-blue-200 to-blue-300 rounded-full opacity-20 blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -left-1/4 w-64 h-64 bg-gradient-to-r from-blue-200 to-blue-300 rounded-full opacity-20 blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-gradient-to-r from-blue-300 to-blue-400 rounded-full opacity-15 blur-3xl animate-pulse delay-500" />
       </div>
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-16 lg:pt-20">
@@ -64,15 +69,14 @@ export function HeroSection() {
 
           {/* CTA Button */}
           <div className="flex flex-col gap-4 justify-center items-center mb-6 sm:mb-8 lg:mb-12 px-2 sm:px-4">
-            <BusinessForm>
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-base sm:text-lg lg:text-xl font-semibold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
-              >
-                <Rocket className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3" />
-                Get My Custom AI Solution
-              </Button>
-            </BusinessForm>
+            <Button 
+              size="lg"
+              onClick={() => scrollToSection("apply")}
+              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-base sm:text-lg lg:text-xl font-semibold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+            >
+              <Rocket className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3" />
+              Get My Custom AI Solution
+            </Button>
           </div>
         </div>
       </div>
